@@ -20,7 +20,7 @@ fastapi-openapi-items/
 │   │   └── items_service.py
 │   └── main.py
 ├── plantuml/
-│   └── architecture.puml
+│   └── architecture.mmd
 ├── tests/
 │   ├── conftest.py
 │   └── test_api.py
@@ -75,12 +75,12 @@ docker run --rm -p 8000:8000 fastapi-openapi-items
 
 ## Arkkitehtuurikaavio
 
-- PlantUML-lähde: `plantuml/architecture.puml`
+- Mermaid-lähde: `plantuml/architecture.mmd`
 
-Esimerkkirenderöinti PNG:ksi (jos `plantuml` CLI on asennettu):
+GitHub renderöi Mermaidin suoraan markdownissa. Halutessasi voit renderöidä PNG:n lokaalisti Mermaid CLI:llä:
 
 ```bash
-plantuml -tpng plantuml/architecture.puml
+mmdc -i plantuml/architecture.mmd -o plantuml/architecture.png
 ```
 
 ## API endpointit
