@@ -5,11 +5,17 @@ title FastAPI Items API - Architecture
 
 actor Client
 
-component "FastAPI Router\n(app/api/routes)" as Router
-component "Service Layer\n(app/services)" as Service
-component "Pydantic Models\n(app/models)" as Models
+rectangle "FastAPI Application" {
+  component "main.py\n(FastAPI app)" as App
+  component "FastAPI Router\n(app/api/routes)" as Router
+  component "Service Layer\n(app/services)" as Service
+  component "Pydantic Models\n(app/models)" as Models
+  component "Settings\n(app/core/config.py)" as Settings
+}
 
-Client --> Router : HTTP requests
+Client --> App : HTTP requests\n/docs /redoc /openapi.json\n/api/*
+App --> Router : include_router(/api)
+App --> Settings : load configuration
 Router --> Service : call business logic
 Router --> Models : validate request/response
 Service --> Models : create/read model instances

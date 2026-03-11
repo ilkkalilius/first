@@ -73,6 +73,16 @@ docker run --rm -p 8000:8000 fastapi-openapi-items
 - Swagger UI (Docs): `http://localhost:8000/docs`
 - ReDoc: `http://localhost:8000/redoc`
 
+## Arkkitehtuurikaavio
+
+- PlantUML-lähde: `plantuml/architecture.puml`
+
+Esimerkkirenderöinti PNG:ksi (jos `plantuml` CLI on asennettu):
+
+```bash
+plantuml -tpng plantuml/architecture.puml
+```
+
 ## API endpointit
 
 - `GET /api/health`
