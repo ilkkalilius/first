@@ -35,10 +35,10 @@ fastapi-openapi-items/
 ## Paikallinen käynnistys
 
 ```bash
-python3.11 -m venv .venv
+python3.13 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
-pip install -e .[dev]
+pip install -e '.[dev]'
 uvicorn app.main:app --reload --port 8000
 ```
 
