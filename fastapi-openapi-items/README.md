@@ -77,7 +77,27 @@ docker run --rm -p 8000:8000 fastapi-openapi-items
 
 - Mermaid-lähde: `plantuml/architecture.mmd`
 
-GitHub renderöi Mermaidin suoraan markdownissa. Halutessasi voit renderöidä PNG:n lokaalisti Mermaid CLI:llä:
+```mermaid
+flowchart LR
+    client[Client]
+
+    subgraph app[FastAPI Application]
+        app_main[main.py\nFastAPI app]
+        router[FastAPI Router\napp/api/routes]
+        service[Service Layer\napp/services]
+        models[Pydantic Models\napp/models]
+        settings[Settings\napp/core/config.py]
+    end
+
+    client -->|HTTP requests\n/docs /redoc /openapi.json /api/*| app_main
+    app_main -->|include_router /api| router
+    app_main -->|load config| settings
+    router -->|call business logic| service
+    router -->|validate req/resp| models
+    service -->|create/read model instances| models
+```
+
+Halutessasi voit renderöidä PNG:n lokaalisti Mermaid CLI:llä:
 
 ```bash
 mmdc -i plantuml/architecture.mmd -o plantuml/architecture.png
